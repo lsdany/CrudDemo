@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Estudiantes</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+
+</head>
+<body>
+<!--/*@thymesVar id="students" type="java.util.List"*/-->
+<!--/*@thymesVar id="student" type="com.ld.cruddemo.domain.Student"*/-->
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+
+                <!--titulo-->
+                <div class="panel-heading">
+                    <h1 class="panel-title">Estudiantes</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover ">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Edad</th>
+                                <th>Email</th>
+                                <th>Ver</th>
+                                <th>Actualizar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                            </thead>
+                            <tr th:remove="all">
+                                <td>53</td>
+                                <td>Luisdany Pernillo</td>
+                                <td>30</td>
+                                <td>luisdany@gmail.com</td>
+                                <td><a href="#">Ver</a></td>
+                                <td><a href="#">Actualizar</a></td>
+                                <td><a href="#">Eliminar</a> </td>
+                            </tr>
+                            <tr th:remove="all">
+                                <td>13</td>
+                                <td>Juan Castillo</td>
+                                <td>25</td>
+                                <td>jcastillo@gmail.com</td>
+                                <td><a href="#">Ver</a></td>
+                                <td><a href="#">Actualizar</a></td>
+                                <td><a href="#">Eliminar</a> </td>
+                            </tr>
+
+                            <!--/*@thymesVar id="student" type="com.ld.cruddemo.domain.Student"*/-->
+
+                            <tr th:each="student : ${students}">
+                                <td th:text="${student.id}">123456</td></th>
+                                <td th:text="${student.name}">Juan Pueblo</td>
+                                <td th:text="${student.age}">Juan Pueblo</td>
+                                <td th:text="${student.email}">Juan Pueblo</td>
+                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/view'}">Ver</a></td>
+                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/update'}">Actualizar</a></td>
+                                <td><a href="#" th:href="@{'/student/' + ${student.id} + '/delete'}">Eliminar</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
